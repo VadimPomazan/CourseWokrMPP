@@ -1,0 +1,49 @@
+.block_registration{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.block_registration__title{
+    margin-bottom: 20px;
+}
+.block_registration__subtitle{
+    margin-bottom: 15px;
+}
+
+.field, .actions{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+.last-field{
+    margin-bottom: 40px;
+}
+.actions{
+    align-items: center;
+}
+.field input{
+    width: 270px;
+    height: 24px;
+    font-size: 24px;
+    padding-left: 1px;
+}
+.field label{
+    margin-bottom: 5px;
+}
+
+.actions input{
+    width: 130px;
+    height: 35px;
+    font-size: 18px;
+    border: #ffa101 1px solid;
+    border-radius: 5px;
+    color: #ffa101;
+    background: #fff;
+    transition: background-color 0.2s, color 0.2s;
+    cursor: pointer;
+}
+.actions input:hover{
+    color: #fae6b1;
+    background: #ffa101;
+}

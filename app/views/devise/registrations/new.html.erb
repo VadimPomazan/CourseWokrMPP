@@ -1,34 +1,73 @@
-<h2>Sign up</h2>
+<div class="block_registration">
+  <h1 class="block_registration__title">Sign up</h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :role %><br />
-    <%= f.select :role, User::ROLES %>
-  </div>
+    <div class="field">
+      <%= f.label :role %>
+      <%= f.select :role, User::ROLES %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <h2 class="block_registration__subtitle">Profile Information</h2>
+    <%= f.fields_for :profile do |pf| %>
+      <div class="field">
+        <%= pf.label :first_name %>
+        <%= pf.text_field :first_name %>
+      </div>
 
-<%= render "devise/shared/links" %>
+      <div class="field">
+        <%= pf.label :last_name %>
+        <%= pf.text_field :last_name %>
+      </div>
+
+      <div class="field">
+        <%= pf.label :patronym %>
+        <%= pf.text_field :patronym %>
+      </div>
+
+      <div class="field">
+        <%= pf.label :tel %>
+        <%= pf.text_field :tel %>
+      </div>
+
+      <div class="field">
+        <%= pf.label :address %>
+        <%= pf.text_field :address %>
+      </div>
+
+      <div class="field">
+        <%= pf.label :date_of_birth %>
+        <%= pf.date_field :date_of_birth %>
+      </div>
+
+      <div class="field last-field">
+        <%= pf.label :gender %>
+        <%= pf.select :gender, ['male', 'female'], prompt: "Select gender" %>
+      </div>
+    <% end %>
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>
