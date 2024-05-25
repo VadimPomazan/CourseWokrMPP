@@ -4,7 +4,7 @@ class FamilyMember < ApplicationRecord
 
   validates :family_member_name, presence: true
   validate :user_must_be_client
-
+  accepts_nested_attributes_for :person
   private
 
   def user_must_be_client

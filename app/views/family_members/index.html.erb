@@ -1,14 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<h1>Your Family Members</h1>
 
-<h1>Family members</h1>
+<%= link_to 'Add Family Member', new_family_member_path %>
+<%= button_to 'Add Yourself', add_self_family_members_path(current_user.id), method: :post %>
 
-<div id="family_members">
+<ul>
   <% @family_members.each do |family_member| %>
-    <%= render family_member %>
-    <p>
-      <%= link_to "Show this family member", family_member %>
-    </p>
+    <li>
+      <%= family_member.family_member_name %> - <%= family_member.person.full_name %>
+    </li>
   <% end %>
-</div>
-
-<%= link_to "New family member", new_family_member_path %>
+</ul>

@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :type_of_analyses
   resources :analyses
-  resources :family_members
+  resources :family_members, only: [:index, :new, :create] do
+    collection do
+      post :add_self
+    end
+  end
   resources :people
   resources :profiles
   get 'pages/home'

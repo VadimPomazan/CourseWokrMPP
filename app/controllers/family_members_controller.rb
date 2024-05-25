@@ -1,14 +1,9 @@
 class FamilyMembersController < ApplicationController
   before_action :set_family_member, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
   # GET /family_members or /family_members.json
   def index
-    if current_user.role == "client"
-      @family_members = current_user.family_members
-    else
-      # Handle for other user roles if needed
-      @family_members = FamilyMember.all
-    end
+    @family_members = current_user.family_members.includes(:person).all
   end
 
 
@@ -18,9 +13,8 @@ class FamilyMembersController < ApplicationController
 
   # GET /family_members/new
   def new
-    @family_member = FamilyMember.new
-    # Set the user_id based on the current user
-    @family_member.user_id = current_user.id if current_user
+    @family_member = current_user.family_members.new
+    @person = @family_member.build_person
   end
 
   # GET /family_members/1/edit
@@ -29,16 +23,31 @@ class FamilyMembersController < ApplicationController
 
   # POST /family_members or /family_members.json
   def create
-    @family_member = FamilyMember.new(family_member_params)
+    @family_member = current_user.family_members.new(family_member_params)
 
-    respond_to do |format|
-      if @family_member.save
-        format.html { redirect_to family_member_url(@family_member), notice: "Family member was successfully created." }
-        format.json { render :show, status: :created, location: @family_member }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @family_member.errors, status: :unprocessable_entity }
-      end
+    if @family_member.save
+      redirect_to family_members_path, notice: 'Family member was successfully created.'
+    else
+      @person = @family_member.build_person
+      render :new
+    end
+  end
+
+  def add_self
+    @person = Person.new(
+      first_name: current_user.profile.first_name,
+      last_name: current_user.profile.last_name,
+      patronym: current_user.profile.patronym,
+      phone_number: current_user.profile.tel,
+      address: current_user.profile.address,
+      date_of_birth: current_user.profile.date_of_birth
+    )
+    @family_member = current_user.family_members.new(family_member_name: 'You', person: @person)
+
+    if @person.save && @family_member.save
+      redirect_to family_members_path, notice: 'You have been added as a family member.'
+    else
+      redirect_to family_members_path, alert: 'Unable to add yourself as a family member.'
     end
   end
 
@@ -73,6 +82,6 @@ class FamilyMembersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def family_member_params
-    params.require(:family_member).permit(:user_id, :person_id, :family_member_name)
+    params.require(:family_member).permit(:family_member_name, person_attributes: [:first_name, :last_name, :patronym, :phone_number, :address, :date_of_birth])
   end
 end
