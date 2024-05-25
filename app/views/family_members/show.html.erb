@@ -4,6 +4,7 @@
 
 <div>
   <%= link_to "Edit this family member", edit_family_member_path(@family_member) %> |
+  <%= link_to "Edit corresponding person", edit_person_path(@family_member.person) %> |
   <%= link_to "Back to family members", family_members_path %>
 
   <%= button_to "Destroy this family member", @family_member, method: :delete %>
