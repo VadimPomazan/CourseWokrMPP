@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :family_members
+  resources :people
   resources :profiles
   get 'pages/home'
   devise_for :users, controllers: { registrations: "registrations" }
