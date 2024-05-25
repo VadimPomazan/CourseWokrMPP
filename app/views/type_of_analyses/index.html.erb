@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Type of analyses</h1>
+
+<div id="type_of_analyses">
+  <% @type_of_analyses.each do |type_of_analysis| %>
+    <%= render type_of_analysis %>
+    <p>
+      <%= link_to "Show this type of analysis", type_of_analysis %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New type of analysis", new_type_of_analysis_path %>

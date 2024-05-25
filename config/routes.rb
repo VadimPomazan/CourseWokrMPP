@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :type_of_analyses
   resources :analyses
   resources :family_members
   resources :people

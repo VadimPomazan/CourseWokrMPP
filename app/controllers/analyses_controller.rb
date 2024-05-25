@@ -62,13 +62,13 @@ class AnalysesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_analysis
-      @analysis = Analysis.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_analysis
+    @analysis = Analysis.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def analysis_params
-      params.require(:analysis).permit(:name, :description, :price)
-    end
+  # Only allow a list of trusted parameters through.
+  def analysis_params
+    params.require(:analysis).permit(:name, :description, :price, :type_of_analysis_id)
+  end
 end

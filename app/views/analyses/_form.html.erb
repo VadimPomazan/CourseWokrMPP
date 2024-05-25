@@ -27,6 +27,11 @@
   </div>
 
   <div>
+    <%= form.label :type_of_analysis_id, style: "display: block" %>
+    <%= form.collection_select :type_of_analysis_id, TypeOfAnalysis.all, :id, :name, prompt: true %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
