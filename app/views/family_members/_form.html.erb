@@ -11,10 +11,8 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
+  <%# Hide the user_id field since it should be automatically populated %>
+  <%= form.hidden_field :user_id %>
 
   <div>
     <%= form.label :person_id, style: "display: block" %>

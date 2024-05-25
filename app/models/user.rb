@@ -7,6 +7,9 @@ class User < ApplicationRecord
          :confirmable # Add :confirmable module
 
   has_one :profile, dependent: :destroy
+  has_many :family_members
+  has_many :people, through: :family_members
+
   accepts_nested_attributes_for :profile
 
   # Add this line to define the available roles

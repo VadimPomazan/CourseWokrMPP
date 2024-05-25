@@ -1,17 +1,27 @@
 <div id="<%= dom_id family_member %>">
   <p>
     <strong>User:</strong>
-    <%= family_member.user_id %>
+    <%= family_member.user.email %>
   </p>
-
-  <p>
-    <strong>Person:</strong>
-    <%= family_member.person_id %>
-  </p>
-
   <p>
     <strong>Family member name:</strong>
     <%= family_member.family_member_name %>
+  </p>
+  <p>
+    <strong>Person:</strong>
+    <br>
+    <%= "First Name: #{family_member.person.first_name}" %>
+    <br>
+    <%= "Last Name: #{family_member.person.last_name}" %>
+    <br>
+    <%= "Patronym: #{family_member.person.patronym}" %>
+    <br>
+    <%= "Phone Number: #{family_member.person.phone_number}" %>
+    <br>
+    <%= "Address: #{family_member.person.address}" %>
+    <br>
+    <%= "Date of Birth: #{family_member.person.date_of_birth}" %>
+    <%# Add any other relevant information about the person here %>
   </p>
 
 </div>

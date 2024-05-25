@@ -3,8 +3,14 @@ class FamilyMembersController < ApplicationController
 
   # GET /family_members or /family_members.json
   def index
-    @family_members = FamilyMember.all
+    if current_user.role == "client"
+      @family_members = current_user.family_members
+    else
+      # Handle for other user roles if needed
+      @family_members = FamilyMember.all
+    end
   end
+
 
   # GET /family_members/1 or /family_members/1.json
   def show
@@ -13,6 +19,8 @@ class FamilyMembersController < ApplicationController
   # GET /family_members/new
   def new
     @family_member = FamilyMember.new
+    # Set the user_id based on the current user
+    @family_member.user_id = current_user.id if current_user
   end
 
   # GET /family_members/1/edit
@@ -58,13 +66,13 @@ class FamilyMembersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_family_member
-      @family_member = FamilyMember.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_family_member
+    @family_member = FamilyMember.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def family_member_params
-      params.require(:family_member).permit(:user_id, :person_id, :family_member_name)
-    end
+  # Only allow a list of trusted parameters through.
+  def family_member_params
+    params.require(:family_member).permit(:user_id, :person_id, :family_member_name)
+  end
 end
