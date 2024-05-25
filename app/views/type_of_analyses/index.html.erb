@@ -11,4 +11,6 @@
   <% end %>
 </div>
 
-<%= link_to "New type of analysis", new_type_of_analysis_path %>
+<% if current_user.role == "doctor" %>
+  <%= link_to "New analysis", new_analysis_path %>
+<% end %>
