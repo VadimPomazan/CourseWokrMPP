@@ -11,27 +11,30 @@
 </head>
 
 <body>
-  <div class="container">
-    <ul>
-      <% if user_signed_in? %>
+<div class="container">
+  <ul>
+    <% if user_signed_in? %>
+      <li>
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'logout-button' %>
+      </li>
+      <% if current_user.profile.present? %>
         <li>
-          <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'logout-button' %>
+          <%= link_to 'My Profile', profile_path(current_user.profile) %>
         </li>
-        <% if current_user.profile.present? %>
-          <li>
-            <%= link_to 'My Profile', profile_path(current_user.profile) %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to 'Create Profile', new_profile_path %>
-          </li>
-        <% end %>
+        <li>
+          <%= link_to 'View Analyses', analyses_path %>
+        </li>
       <% else %>
-        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-        <li><%= link_to 'Login', new_user_session_path %></li>
+        <li>
+          <%= link_to 'Create Profile', new_profile_path %>
+        </li>
       <% end %>
-    </ul>
-    <%= yield %>
-  </div>
+    <% else %>
+      <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+      <li><%= link_to 'Login', new_user_session_path %></li>
+    <% end %>
+  </ul>
+  <%= yield %>
+</div>
 </body>
 </html>

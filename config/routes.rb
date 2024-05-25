@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :analyses
   resources :family_members
   resources :people
   resources :profiles
