@@ -1,8 +1,9 @@
 <h1>Your Family Members</h1>
 
 <%= link_to 'Add Family Member', new_family_member_path %>
-<%= button_to 'Add Yourself', add_self_family_members_path(current_user.id), method: :post %>
-
+  <% unless @family_members.any? { | member | member.family_member_name == "You"}  %>
+    <%= button_to 'Add Yourself', add_self_family_members_path(current_user.id), method: :post %>
+  <% end %>
 <ul>
   <% @family_members.each do |family_member| %>
     <li>

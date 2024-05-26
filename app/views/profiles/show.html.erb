@@ -1,18 +1,13 @@
 <p style="color: green"><%= notice %></p>
+<div>
+  <%= link_to "Edit this profile", edit_profile_path(@profile) %>
+</div>
 
 <%= render @profile %>
 
-<div>
-  <%= link_to "Edit this profile", edit_profile_path(@profile) %> |
-  <%= link_to "Back to profiles", profiles_path %>
-
-  <%= button_to "Destroy this profile", @profile, method: :delete %>
-</div>
 
 <% if current_user.role == "client" %>
   <div>
-    <%= link_to "Create a new Person", new_person_path %>
-    <%= link_to "Create a new Family_member", new_family_member_path %>
     <%= link_to "View Family Members", family_members_path(user_id: current_user.id) %>
   </div>
 <% end %>
