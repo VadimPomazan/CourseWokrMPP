@@ -1,14 +1,11 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Orders</h1>
-
-<div id="orders">
+<h1>Мої замовлення</h1>
+<% if current_user.role == "client" %>
+  <%= button_to 'Створити замовлення', orders_path, method: :post %>
+<% end %>
+<ul>
   <% @orders.each do |order| %>
-    <%= render order %>
-    <p>
-      <%= link_to "Show this order", order %>
-    </p>
+    <li>
+      <%= link_to "Замовлення ##{order.id}", order_path(order) %> - <%= order.total_price %> грн
+    </li>
   <% end %>
-</div>
-
-<%= link_to "New order", new_order_path %>
+</ul>

@@ -1,10 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @order %>
-
-<div>
-  <%= link_to "Edit this order", edit_order_path(@order) %> |
-  <%= link_to "Back to orders", orders_path %>
-
-  <%= button_to "Destroy this order", @order, method: :delete %>
-</div>
+<h1>Замовлення #<%= @order.id %></h1>
+<p>Сума: <%= @order.total_price %> грн</p>
+<ul>
+  <% @order.order_items.each do |item| %>
+    <li><%= item.analysis.name %> - <%= item.analysis.price %> грн</li>
+  <% end %>
+</ul>
+<%= link_to 'Додати аналіз', analyses_path(order_id: @order.id) %>

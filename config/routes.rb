@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  resources :order_items
-  resources :orders
+  resources :orders, only: [:index, :create, :show] do
+    resources :order_items, only: [:create]
+  end
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :type_of_analyses
-  resources :analyses
+  resources :analyses, only: [:index]
   resources :family_members, only: [:index, :new, :create] do
     collection do
       post :add_self

@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<% @analysis.each do | analysis |  %>
+  <div style="width: 300px;">
+    <p><%= analysis.name %>(<%= @type_of_analysis.find(analysis.type_of_analysis_id).name %>)</p>
+    <p><%= analysis.description %></p>
+    <p><%= analysis.price %></p>
+  </div>
+<% end %>

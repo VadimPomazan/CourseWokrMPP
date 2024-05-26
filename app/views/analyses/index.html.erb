@@ -1,23 +1,9 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Analyses</h1>
-
-<%= form_with(url: analyses_path, method: "get") do %>
-  <div>
-    <%= text_field_tag :search, params[:search], placeholder: "Search by name" %>
-    <%= submit_tag "Search" %>
-  </div>
-<% end %>
-
-<div id="analyses">
+<h1>Аналізи</h1>
+<ul>
   <% @analyses.each do |analysis| %>
-    <%= render analysis %>
-    <p>
-      <%= link_to "Show this analysis", analysis %>
-    </p>
+    <li>
+      <%= analysis.name %> - <%= analysis.price %> грн
+      <%= button_to 'Додати до замовлення', order_order_items_path(order_id: @order_id, analysis_id: analysis.id), method: :post %>
+    </li>
   <% end %>
-</div>
-
-<% if current_user.role == "doctor" %>
-  <%= link_to "New analysis", new_analysis_path %>
-<% end %>
+</ul>

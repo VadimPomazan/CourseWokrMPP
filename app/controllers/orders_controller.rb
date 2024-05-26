@@ -1,9 +1,23 @@
-class OrdersController < InheritedResources::Base
+class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_if_client, only: [:create]
+
+  def index
+    @orders = current_user.orders
+  end
+
+  def create
+    @order = current_user.orders.create(total_price: 0)
+    redirect_to analyses_path(order_id: @order.id)
+  end
+
+  def show
+    @order = current_user.orders.find(params[:id])
+  end
 
   private
 
-    def order_params
-      params.require(:order).permit(:user_id, :total_price)
-    end
-
+  def check_if_client
+    redirect_to root_path, alert: "You are doctor, you dint need the Analyse, you are healthy" unless current_user.role == "client"
+  end
 end

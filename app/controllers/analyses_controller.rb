@@ -8,6 +8,7 @@ class AnalysesController < ApplicationController
                 else
                   Analysis.all
                 end
+    @order_id = params[:order_id]
   end
 
   # GET /analyses/1 or /analyses/1.json
