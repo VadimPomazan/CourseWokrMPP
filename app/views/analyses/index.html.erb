@@ -1,9 +1,9 @@
-<h1>Аналізи</h1>
+<h1>Analysis</h1>
 <ul>
   <% @analyses.each do |analysis| %>
     <li>
-      <%= analysis.name %> - <%= analysis.price %> грн
-      <%= button_to 'Додати до замовлення', order_order_items_path(order_id: @order_id, analysis_id: analysis.id), method: :post %>
+      <%= analysis.name %> - <%= analysis.price %> ₴
+      <%= button_to 'Add to order', order_order_items_path(order_id: @order_id, analysis_id: analysis.id), method: :post %>
     </li>
   <% end %>
 </ul>

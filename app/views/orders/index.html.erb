@@ -1,11 +1,11 @@
-<h1>Мої замовлення</h1>
+<h1>Yours Orders</h1>
 <% if current_user.role == "client" %>
-  <%= button_to 'Створити замовлення', orders_path, method: :post %>
+  <%= button_to 'Create Order', orders_path, method: :post %>
 <% end %>
 <ul>
   <% @orders.each do |order| %>
     <li>
-      <%= link_to "Замовлення ##{order.id}", order_path(order) %> - <%= order.total_price %> грн
+      <%= link_to "Order ##{order.id}", order_path(order) %> - <%= order.total_price %> ₴
     </li>
   <% end %>
 </ul>

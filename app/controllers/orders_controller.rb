@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = current_user.orders
+    # @orders = current_user.orders.includes(:appointment).reject(&:appointment_present?)
   end
 
   def create
@@ -13,6 +14,9 @@ class OrdersController < ApplicationController
 
   def show
     @order = current_user.orders.find(params[:id])
+    # if @order.appointment_present?
+    #   redirect_to order_path, alert: "This order already has appointment."
+    # end
   end
 
   private

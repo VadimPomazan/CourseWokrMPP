@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_25_200854) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_27_172328) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_25_200854) do
     t.datetime "updated_at", null: false
     t.bigint "type_of_analysis_id"
     t.index ["type_of_analysis_id"], name: "index_analyses_on_type_of_analysis_id"
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "family_member_id", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "analysis_datetime", null: false
+    t.index ["family_member_id"], name: "index_appointments_on_family_member_id"
+    t.index ["order_id"], name: "index_appointments_on_order_id", unique: true
+    t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
   create_table "family_members", force: :cascade do |t|
@@ -127,6 +139,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_25_200854) do
   end
 
   add_foreign_key "analyses", "type_of_analyses"
+  add_foreign_key "appointments", "family_members"
+  add_foreign_key "appointments", "orders"
+  add_foreign_key "appointments", "users"
   add_foreign_key "family_members", "people"
   add_foreign_key "family_members", "users"
   add_foreign_key "order_items", "analyses"

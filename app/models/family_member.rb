@@ -1,6 +1,7 @@
 class FamilyMember < ApplicationRecord
   belongs_to :user
   belongs_to :person
+  has_many :appointments, dependent: :destroy
 
   validates :family_member_name, presence: true
   validate :user_must_be_client

@@ -13,6 +13,14 @@ Rails.application.routes.draw do
   end
   resources :people
   resources :profiles
+  resources :appointments, only: [:index, :show, :create]
+  resources :orders, only: [:show] do
+    member do
+      get 'new_appointment', to: "appointments#new"
+    end
+  end
+
+
   get 'pages/home'
   devise_for :users, controllers: { registrations: "registrations" }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

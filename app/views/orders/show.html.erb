@@ -1,8 +1,16 @@
-<h1>Замовлення #<%= @order.id %></h1>
-<p>Сума: <%= @order.total_price %> грн</p>
+<h1>Order #<%= @order.id %></h1>
+<p>Total price: <%= @order.total_price %> ₴</p>
 <ul>
   <% @order.order_items.each do |item| %>
     <li><%= item.analysis.name %> - <%= item.analysis.price %> грн</li>
   <% end %>
 </ul>
-<%= link_to 'Додати аналіз', analyses_path(order_id: @order.id) %>
+
+<% if @order.appointment_present? %>
+  <p>An appointment has already been scheduled for this order.</p>
+<%  else %>
+  <%=  link_to 'Schedule Appointment', new_appointment_order_path(@order), class: 'btn btn-primary'  %>
+  <%= link_to 'Add analysis', analyses_path(order_id: @order.id) %>
+<%  end %>
+
+

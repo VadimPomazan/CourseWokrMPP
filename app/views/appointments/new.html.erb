@@ -1,0 +1,34 @@
+<%= form_with(model: @appointment, local: true) do |form| %>
+  <% if @appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+      <ul>
+        <% @appointment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :family_member_id %>
+    <%= form.collection_select :family_member_id, @family_members, :id, :family_member_name, prompt: "Choose Family Member" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :order_id %>
+    <%= form.hidden_field :order_id, value: @appointment.order_id %>
+    <%#= @appointment.order_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :analysis_datetime %>
+    <%= form.datetime_field :analysis_datetime %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
