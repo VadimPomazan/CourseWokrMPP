@@ -22,10 +22,10 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
-    <div class="field last-field field-select">
-      <%= f.label :role %>
-      <%= f.select :role, User::ROLES %>
-    </div>
+<!--    <div class="field last-field field-select">-->
+      <%#= f.label :role %>
+      <%#= f.select :role, User::ROLES %>
+<!--    </div>-->
 
     <h2 class="block_form__subtitle">Profile Information</h2>
     <%= f.fields_for :profile do |pf| %>

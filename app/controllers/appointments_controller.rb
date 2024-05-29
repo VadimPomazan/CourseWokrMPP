@@ -27,9 +27,17 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
   end
 
+  def cancel
+    @appointment = Appointment.find(params[:id])
+    @appointment.cancel!
+    redirect_to @appointment, notice: "Appointment was successfully canceled."
+  end
 
   private
 
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
   def appointment_params
     params.require(:appointment).permit(:family_member_id, :order_id, :analysis_datetime)
   end

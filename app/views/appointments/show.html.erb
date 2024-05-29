@@ -12,4 +12,11 @@
   <strong>Analysis Date:</strong>
   <%= @appointment.analysis_datetime %>
 </p>
+<p>
+  <strong>Status:</strong>
+  <%= @appointment.status %>
+</p>
+<% if @appointment.scheduled? %>
+  <%= button_to 'Cancel Appointment', cancel_appointment_path(@appointment), method: :patch, data: { confirm: 'Are you sure?' } %>
+<% end %>
 

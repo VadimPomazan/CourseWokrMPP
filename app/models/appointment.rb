@@ -7,4 +7,10 @@ class Appointment < ApplicationRecord
 
   validates :analysis_datetime, presence: true
 
+  enum status: { scheduled: 0, completed: 1, canceled: 2 }
+
+  def cancel!
+    canceled!
+  end
+
 end

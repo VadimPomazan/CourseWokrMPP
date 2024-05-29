@@ -14,12 +14,16 @@ Rails.application.routes.draw do
   resources :people
   resources :profiles
   resources :appointments, only: [:index, :show, :create]
+  resources :appointments do
+    member do
+      patch :cancel
+    end
+  end
   resources :orders, only: [:show] do
     member do
       get 'new_appointment', to: "appointments#new"
     end
   end
-
 
   get 'pages/home'
   devise_for :users, controllers: { registrations: "registrations" }

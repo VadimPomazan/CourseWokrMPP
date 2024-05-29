@@ -1,9 +1,9 @@
 <h1>Yours Appointments</h1>
 
 <ul>
-  <% @appointments.each do |appoint| %>
-    <li>
-      <%= link_to "Appointment for order ##{appoint.id}", appointments_path(appoint) %> - <%= appoint.analysis_date %> <%= appoint.analysis_time %>
-    </li>
-  <% end %>
+      <% @appointments.each do |appoint| %>
+        <li>
+          <%= link_to "Appointment for order ##{appoint.order_id}", appointment_path(appoint) %> - <%= appoint.analysis_datetime %>
+        </li>
+      <% end %>
 </ul>
