@@ -5,14 +5,14 @@ ActiveAdmin.register FamilyMember do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :user_id, :person_id, :family_member_name
+  permit_params :user_id, :person_id, :family_member_name
   #
   # or
   #
-  # permit_params do
-  #   permitted = [:user_id, :person_id, :family_member_name]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+  permit_params do
+    permitted = [:user_id, :person_id, :family_member_name]
+    permitted << :other if params[:action] == 'create'
+    permitted
+  end
   
 end

@@ -96,7 +96,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_28_175351) do
     t.string "patronym"
     t.string "phone_number"
     t.string "address"
-    t.date "date_of_birth"
+    t.datetime "date_of_birth"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
