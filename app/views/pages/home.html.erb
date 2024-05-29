@@ -1,15 +1,25 @@
-<div class="search-form">
-  <%= form_with(url: root_path, method: :get, local: true) do %>
-
-      <%= label_tag :search, "Search:" %>
-      <%= text_field_tag :search, params[:search], placeholder: "Enter type or name of analyses" %>
-      <%= submit_tag "Search" %>
-  <% end %>
-</div>
-<% @analysis.each do | analysis |  %>
-  <div style="width: 300px;">
-    <p><%= analysis.name %>(<%= @type_of_analysis.find(analysis.type_of_analysis_id).name %>)</p>
-    <p><%= analysis.description %></p>
-    <p><%= analysis.price %></p>
+<div class="block__info">
+  <div class="info__first-line">
+    <h1 class="info__title">
+      Our Analyses
+    </h1>
+    <div class="search-form">
+      <%= form_with(url: root_path, method: :get, local: true, class: "search-form__form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Enter type or name of analyses", class: "search-form__field" %>
+          <%= submit_tag "Search", class: "search-form__button" %>
+      <% end %>
+    </div>
   </div>
-<% end %>
+  <div class="info__list">
+    <% @analysis.each do | analysis |  %>
+      <div class="info__item">
+        <h2 class="item__title"><%= analysis.name %></h2>
+        <h3 class="item__subtitle">(<%= @type_of_analysis.find(analysis.type_of_analysis_id).name %>)</h3>
+        <p class="item__description"><%= analysis.description %> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, amet aperiam, aspernatur assumenda beatae doloremque earum fuga, iure nemo officia pariatur perspiciatis placeat quam qui quidem recusandae repellendus ut voluptatum.</p>
+        <div class="item__price">
+          <p class="price__data"><%= analysis.price %> cu</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

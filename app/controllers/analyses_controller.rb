@@ -3,12 +3,17 @@ class AnalysesController < ApplicationController
 
   # GET /analyses or /analyses.json
   def index
-    @analyses = if params[:search]
-                  Analysis.where("name LIKE ?", "%#{params[:search]}%")
-                else
-                  Analysis.all
-                end
     @order_id = params[:order_id]
+    if params[:search].present?
+      @order_id = params[:order_id]
+      @analysis = Analysis.joins(:type_of_analysis).where("analyses.name ILIKE :search OR type_of_analyses.name ILIKE :search", search: "%#{params[:search]}%")
+    else
+      @analysis = Analysis.all
+    end
+
+    Rails.logger.debug("Order ID: #{@order_id}")
+    @type_of_analysis = TypeOfAnalysis.all
+
   end
 
   # GET /analyses/1 or /analyses/1.json

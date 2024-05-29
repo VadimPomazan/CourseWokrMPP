@@ -1,27 +1,27 @@
 <p style="color: green"><%= notice %></p>
 
-<!--<h1>Profiles</h1>-->
+<div class="block__info">
 
-<!--<div id="profiles">-->
-  <%# @profiles.each do |profile| %>
-    <%#= render profile %>
-<!--    <p>-->
-      <%#= link_to "Show this profile", profile %>
-<!--    </p>-->
-  <%# end %>
-<!--</div>-->
+  <div class="info__first-line">
+    <h1 class="info__title">
+      Your Profile
+    </h1>
+  </div>
+  <div class="info__item">
+    <p class="item__description">email: <strong><%= @profile.user.email %></strong></p>
+    <p class="item__description">Name: <strong><%= @profile.first_name %></strong></p>
+    <p class="item__description">Surname: <strong><%= @profile.last_name %></strong></p>
+    <p class="item__description">Fatherly: <strong><%= @profile.patronym %></strong></p>
+    <p class="item__description">Phone number: <strong><%= @profile.tel %></strong></p>
+    <p class="item__description">Date of birth: <strong> <%= @profile.date_of_birth %></strong></p>
 
-<%#= link_to "New profile", new_profile_path %>
-<p style="color: green"><%= notice %></p>
-<div>
-  <%= link_to "Edit this profile", edit_profile_path(id: @profile.id) %>
+
+    <div class="action">
+      <div class="link_to">
+        <%= link_to "Edit", edit_profile_path(id: @profile.id)%>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<%= render @profile %>
-
-
-<% if current_user.role == "client" %>
-  <div>
-    <%= link_to "View Family Members", family_members_path(user_id: current_user.id) %>
-  </div>
-<% end %>

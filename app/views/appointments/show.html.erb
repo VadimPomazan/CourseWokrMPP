@@ -1,22 +1,27 @@
-<p>
-  <strong>Family Member:</strong>
-  <%= @appointment.family_member.family_member_name %>
-</p>
+<div class="block__info">
+  <div class="info__first-line">
+    <h1 class="info__title">Appointment for order #<%= @appointment.order_id %></h1>
 
-<p>
-  <strong>Order ID:</strong>
-  Order #<%= @appointment.order_id %>
-</p>
-
-<p>
-  <strong>Analysis Date:</strong>
-  <%= @appointment.analysis_datetime %>
-</p>
-<p>
-  <strong>Status:</strong>
-  <%= @appointment.status %>
-</p>
-<% if @appointment.scheduled? %>
-  <%= button_to 'Cancel Appointment', cancel_appointment_path(@appointment), method: :patch, data: { confirm: 'Are you sure?' } %>
-<% end %>
-
+    <% if @appointment.scheduled? %>
+      <%= button_to 'Cancel Appointment', cancel_appointment_path(@appointment), method: :patch, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+  <div class="info__item">
+    <h2 class="item__title">Appointment Info</h2>
+    <p class="item__description">
+      Family Member: <strong><%= @appointment.family_member.family_member_name %></strong>
+    </p>
+    <p class="item__description">
+      Full Name: <strong><%= @appointment.family_member.person.full_name %></strong>
+    </p>
+    <p class="item__description">
+      Analysis Date:
+      <strong><%= @appointment.analysis_datetime %></strong>
+    </p>
+    <div class="item__price">
+      <h3 class="item__subtitle" >
+        <%= @appointment.status %>
+      </h3>
+    </div>
+  </div>
+</div>

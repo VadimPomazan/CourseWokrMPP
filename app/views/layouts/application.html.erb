@@ -26,7 +26,7 @@
             </li>
             <% if current_user.profile.present? %>
             <li class="action__user-item">
-              <%= link_to 'My Profile', profile_path(id: current_user.profile.id), class: 'action__user-link' %>
+              <%= link_to 'My Profile', profiles_path, class: 'action__user-link' %>
             </li>
             <% end %>
           <% else %>
@@ -47,14 +47,41 @@
             <%= link_to 'UK', url_for(locale: 'uk'), class: "action__locale-link" %>
           </li>
         </ul>
-
     </div>
   </header>
+  <% if user_signed_in? %>
+    <nav class="navigation">
+      <ul class="nav__menu-bar">
+        <li class="menu-bar__item">
+          <%= link_to "Profile", profiles_path, class: "menu-bar__link" %>
+        </li>
+        <li class="menu-bar__item">
+          <%= link_to "Family Members", family_members_path, class: "menu-bar__link" %>
+        </li>
+        <li class="menu-bar__item">
+          <%= link_to "Orders", orders_path, class: "menu-bar__link" %>
+        </li>
+        <li class="menu-bar__item">
+          <%= link_to "Appointments", appointments_path, class: "menu-bar__link" %>
+        </li>
+      </ul>
+    </nav>
+  <% end %>
   <main class="main">
     <%= yield %>
   </main>
   <footer class="footer">
-
+    <div class="footer__feedback">
+      <h3 class="feedback__tittle">Contact information: </h3>
+      <p class="feedback__data">+380 96 783 2886</p>
+      <p class="feedback__data">cslab_fb@cslab.com</p>
+      <p class="feedback__data">Kyiv, 10 Mira Ave.</p>
+    </div>
+    <div class="footer__text">
+      <p class="text__data">
+        &copy 2024 CSLab. All rights reserved. Your health under the microscope
+      </p>
+    </div>
   </footer>
 </div>
 </body>

@@ -1,13 +1,21 @@
-<h1>Your Family Members</h1>
-
-<%= link_to 'Add Family Member', new_family_member_path %>
-  <% unless @family_members.any? { | member | member.family_member_name == "You"}  %>
-    <%= button_to 'Add Yourself', add_self_family_members_path(current_user.id), method: :post %>
-  <% end %>
-<ul>
-  <% @family_members.each do |family_member| %>
-    <li>
-      <%= family_member.family_member_name %> - <%= family_member.person.full_name %>
-    </li>
-  <% end %>
-</ul>
+<div class="block__info">
+  <div class="info__first-line">
+    <h1 class="info__title">Your Family Members</h1>
+  </div>
+  <div class="action">
+    <div class="link_to">
+        <%= link_to 'Add Family Member', new_family_member_path %>
+    </div>
+      <% unless @family_members.any? { | member | member.family_member_name == "You"}  %>
+        <%= button_to 'Add Yourself', add_self_family_members_path(current_user.id), method: :post %>
+      <% end %>
+  </div>
+    <div class="info__list">
+      <% @family_members.each do |family_member| %>
+        <div class="menu-bar__item">
+          <h3 class="item__subtitle"><%= family_member.family_member_name %></h3>
+          <p class="item__description"><%= family_member.person.full_name %> (<%= family_member.person.date_of_birth %>)</p>
+        </div>
+      <% end %>
+    </div>
+</div>

@@ -1,9 +1,15 @@
-<h1>Yours Appointments</h1>
+<div class="block__info">
+  <div class="info__first-line">
+        <h1 class="info__title">Yours Appointments</h1>
+  </div>
 
-<ul>
+<div class="info__list">
       <% @appointments.each do |appoint| %>
-        <li>
-          <%= link_to "Appointment for order ##{appoint.order_id}", appointment_path(appoint) %> - <%= appoint.analysis_datetime %>
-        </li>
+        <div class="info__item">
+          <h2 class="item__title"><%= link_to "Appointment for order ##{appoint.order_id}", appointment_path(appoint), style: "text-decoration: none; color: #1d3124;" %></h2>
+
+          <h3 class="item__subtitle"><%= appoint.analysis_datetime %></h3>
+        </div>
       <% end %>
-</ul>
+</div>
+</div>

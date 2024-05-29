@@ -37,13 +37,13 @@
     text-decoration: none;
     font-weight: bolder;
     color: #FAEAAB;
-    border: #ffa101 1px solid;
+    border: #FAEAAB 1px solid;
     border-radius: 5px;
     transition: background-color 0.2s, color 0.2s;
 
 }
 .action__user-item:hover .action__user-link{
-    background-color: #FFA101;
+    background-color: #FAEAAB;
     color: #0E2F36;
 }
 
