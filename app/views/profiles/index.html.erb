@@ -1,14 +1,27 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Profiles</h1>
+<!--<h1>Profiles</h1>-->
 
-<div id="profiles">
-  <% @profiles.each do |profile| %>
-    <%= render profile %>
-    <p>
-      <%= link_to "Show this profile", profile %>
-    </p>
-  <% end %>
+<!--<div id="profiles">-->
+  <%# @profiles.each do |profile| %>
+    <%#= render profile %>
+<!--    <p>-->
+      <%#= link_to "Show this profile", profile %>
+<!--    </p>-->
+  <%# end %>
+<!--</div>-->
+
+<%#= link_to "New profile", new_profile_path %>
+<p style="color: green"><%= notice %></p>
+<div>
+  <%= link_to "Edit this profile", edit_profile_path(id: @profile.id) %>
 </div>
 
-<%= link_to "New profile", new_profile_path %>
+<%= render @profile %>
+
+
+<% if current_user.role == "client" %>
+  <div>
+    <%= link_to "View Family Members", family_members_path(user_id: current_user.id) %>
+  </div>
+<% end %>

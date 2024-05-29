@@ -12,32 +12,50 @@
 
 <body>
 <div class="container">
-  <ul>
-    <% if user_signed_in? %>
-      <li>
-        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: 'logout-button' %>
-      </li>
-      <% if current_user.profile.present? %>
-        <li>
-          <%= link_to 'My Profile', profile_path(current_user.profile) %>
-        </li>
-        <li>
-          <%= link_to 'View Analyses', analyses_path %>
-        </li>
-        <li>
-          <%= link_to 'View Type of Analyses', type_of_analyses_path %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to 'Create Profile', new_profile_path %>
-        </li>
-      <% end %>
-    <% else %>
-      <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-      <li><%= link_to 'Login', new_user_session_path %></li>
-    <% end %>
-  </ul>
-  <%= yield %>
+  <header class="header">
+    <div class="header__tittle">
+      <h1 class="header__tittle-text">
+        <%= link_to "CSLab", pages_home_path %>
+      </h1>
+    </div>
+    <div class="header__action">
+        <ul class="action__user-list">
+          <% if user_signed_in? %>
+            <li class="action__user-item">
+              <%= link_to "Logout", destroy_user_session_path, data: {turbo_method: :delete}, class: 'action__user-link' %>
+            </li>
+            <% if current_user.profile.present? %>
+            <li class="action__user-item">
+              <%= link_to 'My Profile', profile_path(id: current_user.profile.id), class: 'action__user-link' %>
+            </li>
+            <% end %>
+          <% else %>
+            <li class="action__user-item">
+              <%= link_to 'Sign Up', new_user_registration_path, class: 'action__user-link' %>
+            </li>
+            <li class="action__user-item">
+              <%= link_to 'Login', new_user_session_path, class: 'action__user-link' %>
+            </li>
+          <% end %>
+        </ul>
+
+        <ul class="action__locale-list">
+          <li class="action__locale-item">
+            <%= link_to 'EN', url_for(locale: 'en'), class: "action__locale-link" %>
+          </li>
+          <li class="action__locale-item">
+            <%= link_to 'UK', url_for(locale: 'uk'), class: "action__locale-link" %>
+          </li>
+        </ul>
+
+    </div>
+  </header>
+  <main class="main">
+    <%= yield %>
+  </main>
+  <footer class="footer">
+
+  </footer>
 </div>
 </body>
 </html>
