@@ -18,11 +18,11 @@
       <%= form.collection_select :family_member_id, @family_members, :id, :family_member_name, prompt: t('appointments.choose_f_m') %>
     </div>
 
-    <!--  <div class="field">-->
+      <div class="field">
     <%#= form.label :order_id %>
-    <%#= form.hidden_field :order_id, value: @appointment.order_id %>
+    <%= form.hidden_field :order_id, value: @appointment.order_id %>
     <%#= @appointment.order_id %>
-    <!--  </div>-->
+      </div>
 
     <div class="field last-field">
       <%= form.label t('structure.analysis_date') %>
