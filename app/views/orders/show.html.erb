@@ -1,10 +1,10 @@
 <div class="block__info">
   <div class="info__first-line">
-    <h1 class="info__title">Order #<%= @order.id %></h1>
+    <h1 class="info__title"><%= t('structure.order') %> #<%= @order.id %></h1>
 
     <%unless @order.appointment_present? %>
     <div class="link_to">
-      <%= link_to 'Add analysis', analyses_path(order_id: @order.id) %>
+      <%= link_to t('actions.add'), analyses_path(order_id: @order.id) %>
     </div>
     <% end %>
   </div>
@@ -22,14 +22,14 @@
   </div>
 
  <div class="item__price">
-  <p class="price__data">Total price: <%= @order.total_price %> cu</p>
+  <p class="price__data"><%= t('structure.total_price') %>: <%= @order.total_price %> cu</p>
  </div>
   <div class="action">
   <% if @order.appointment_present? %>
-    <h3 class="item__subtitle">An appointment has already been scheduled for this order.</h3>
+    <h3 class="item__subtitle"><%= t('actions.appointment_notification') %></h3>
   <%  else %>
     <div class="link_to">
-      <%=  link_to 'Schedule Appointment', new_appointment_order_path(@order), class: 'btn btn-primary'  %>
+      <%=  link_to t('actions.schedule'), new_appointment_order_path(@order), class: 'btn btn-primary'  %>
     </div>
 
   <%  end %>

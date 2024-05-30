@@ -13,43 +13,43 @@
     <% end %>
 
     <div class="field last-field">
-      <%= form.label :family_member_name, style: "display: block" %>
+      <%= form.label t('family_member.name'), style: "display: block" %>
       <%= form.text_field :family_member_name %>
     </div>
 
     <fieldset>
-      <legend class="block_form__subtitle">Person Details</legend>
+      <legend class="block_form__subtitle"><%= t('structure.person_details') %></legend>
 
       <%= form.fields_for :person, family_member.build_person do |person_form| %>
         <div class="field">
-          <%= person_form.label :first_name, style: "display: block" %>
+          <%= person_form.label t('profile.first_name'), style: "display: block" %>
           <%= person_form.text_field :first_name %>
         </div>
         <div class="field">
-          <%= person_form.label :last_name, style: "display: block" %>
+          <%= person_form.label t('profile.second_name'), style: "display: block" %>
           <%= person_form.text_field :last_name %>
         </div>
         <div class="field">
-          <%= person_form.label :patronym, style: "display: block" %>
+          <%= person_form.label t('profile.patronym'), style: "display: block" %>
           <%= person_form.text_field :patronym %>
         </div>
         <div class="field">
-          <%= person_form.label :phone_number, style: "display: block" %>
+          <%= person_form.label t('profile.tel'), style: "display: block" %>
           <%= person_form.text_field :phone_number %>
         </div>
         <div class="field">
-          <%= person_form.label :address, style: "display: block" %>
+          <%= person_form.label t('profile.address'), style: "display: block" %>
           <%= person_form.text_field :address %>
         </div>
         <div class="field last-field">
-          <%= person_form.label :date_of_birth, style: "display: block" %>
+          <%= person_form.label t('profile.birth_date'), style: "display: block" %>
           <%= person_form.date_field :date_of_birth %>
         </div>
       <% end %>
     </fieldset>
 
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit t('actions.create')%>
     </div>
   <% end %>
 </div>

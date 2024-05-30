@@ -1,16 +1,16 @@
 <div class="block_form">
-  <h1 class="block_form__title">Sign up</h1>
+  <h1 class="block_form__title"><%= t('menu.sign_up') %></h1>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
-      <%= f.label :email %>
+      <%= f.label t('profile.email') %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
     <div class="field">
-      <%= f.label :password %>
+      <%= f.label t('profile.password') %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %>
+      <%= f.label t('profile.confirm') %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
@@ -27,45 +27,45 @@
       <%#= f.select :role, User::ROLES %>
 <!--    </div>-->
 
-    <h2 class="block_form__subtitle">Profile Information</h2>
+    <h2 class="block_form__subtitle"><%= t('profile.info') %></h2>
     <%= f.fields_for :profile do |pf| %>
       <div class="field">
-        <%= pf.label :first_name %>
+        <%= pf.label t('profile.first_name') %>
         <%= pf.text_field :first_name %>
       </div>
 
       <div class="field">
-        <%= pf.label :last_name %>
+        <%= pf.label t('profile.second_name') %>
         <%= pf.text_field :last_name %>
       </div>
 
       <div class="field">
-        <%= pf.label :patronym %>
+        <%= pf.label t('profile.patronym') %>
         <%= pf.text_field :patronym %>
       </div>
 
       <div class="field">
-        <%= pf.label :tel %>
+        <%= pf.label t('profile.tel') %>
         <%= pf.text_field :tel %>
       </div>
 
       <div class="field">
-        <%= pf.label :address %>
+        <%= pf.label t('profile.address') %>
         <%= pf.text_field :address %>
       </div>
 
       <div class="field">
-        <%= pf.label :date_of_birth %>
+        <%= pf.label t('profile.birth_date') %>
         <%= pf.date_field :date_of_birth %>
       </div>
 
       <div class="field last-field field-select">
-        <%= pf.label :gender %>
-        <%= pf.select :gender, ['male', 'female'], prompt: "Select gender" %>
+        <%= pf.label t('profile.gender') %>
+        <%= pf.select :gender, [t('gender.male'), t('gender.female')], prompt: t('actions.select') %>
       </div>
     <% end %>
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit t('menu.sign_up') %>
     </div>
   <% end %>
 

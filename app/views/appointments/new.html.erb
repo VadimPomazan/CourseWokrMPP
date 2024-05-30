@@ -1,3 +1,5 @@
+<div class="block_form">
+  <h1 class="block_form__title"><%= t('actions.create_appoint') %></h1>
 <%= form_with(model: @appointment, local: true) do |form| %>
   <% if @appointment.errors.any? %>
     <div id="error_explanation">
@@ -11,24 +13,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :family_member_id %>
-    <%= form.collection_select :family_member_id, @family_members, :id, :family_member_name, prompt: "Choose Family Member" %>
-  </div>
+    <div class="field last-field field-select">
+      <%= form.label t('family_member.name') %>
+      <%= form.collection_select :family_member_id, @family_members, :id, :family_member_name, prompt: t('appointments.choose_f_m') %>
+    </div>
 
-  <div class="field">
-    <%= form.label :order_id %>
-    <%= form.hidden_field :order_id, value: @appointment.order_id %>
+    <!--  <div class="field">-->
+    <%#= form.label :order_id %>
+    <%#= form.hidden_field :order_id, value: @appointment.order_id %>
     <%#= @appointment.order_id %>
-  </div>
+    <!--  </div>-->
 
-  <div class="field">
-    <%= form.label :analysis_datetime %>
-    <%= form.datetime_field :analysis_datetime %>
-  </div>
+    <div class="field last-field">
+      <%= form.label t('structure.analysis_date') %>
+      <%= form.datetime_field :analysis_datetime %>
+    </div>
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit t('actions.create')%>
   </div>
 <% end %>
+</div>

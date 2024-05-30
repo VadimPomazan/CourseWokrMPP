@@ -22,19 +22,19 @@
         <ul class="action__user-list">
           <% if user_signed_in? %>
             <li class="action__user-item">
-              <%= link_to "Logout", destroy_user_session_path, data: {turbo_method: :delete}, class: 'action__user-link' %>
+              <%= link_to t('menu.logout'), destroy_user_session_path, data: {turbo_method: :delete}, class: 'action__user-link' %>
             </li>
             <% if current_user.profile.present? %>
             <li class="action__user-item">
-              <%= link_to 'My Profile', profiles_path, class: 'action__user-link' %>
+              <%= link_to t('menu.profile'), profiles_path, class: 'action__user-link' %>
             </li>
             <% end %>
           <% else %>
             <li class="action__user-item">
-              <%= link_to 'Sign Up', new_user_registration_path, class: 'action__user-link' %>
+              <%= link_to t('menu.sign_up'), new_user_registration_path, class: 'action__user-link' %>
             </li>
             <li class="action__user-item">
-              <%= link_to 'Login', new_user_session_path, class: 'action__user-link' %>
+              <%= link_to t('menu.login'), new_user_session_path, class: 'action__user-link' %>
             </li>
           <% end %>
         </ul>
@@ -53,16 +53,16 @@
     <nav class="navigation">
       <ul class="nav__menu-bar">
         <li class="menu-bar__item">
-          <%= link_to "Profile", profiles_path, class: "menu-bar__link" %>
+          <%= link_to t('structure.profile'), profiles_path, class: "menu-bar__link" %>
         </li>
         <li class="menu-bar__item">
-          <%= link_to "Family Members", family_members_path, class: "menu-bar__link" %>
+          <%= link_to t('structure.family_member'), family_members_path, class: "menu-bar__link" %>
         </li>
         <li class="menu-bar__item">
-          <%= link_to "Orders", orders_path, class: "menu-bar__link" %>
+          <%= link_to t('structure.order'), orders_path, class: "menu-bar__link" %>
         </li>
         <li class="menu-bar__item">
-          <%= link_to "Appointments", appointments_path, class: "menu-bar__link" %>
+          <%= link_to t('structure.appointments'), appointments_path, class: "menu-bar__link" %>
         </li>
       </ul>
     </nav>

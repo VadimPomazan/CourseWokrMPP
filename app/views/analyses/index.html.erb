@@ -1,13 +1,13 @@
 <div class="block__info">
   <div class="info__first-line">
     <h1 class="info__title">
-      Choose Analysis
+      <%= t('structure.analysis') %>
     </h1>
     <div class="search-form">
       <%= form_with(url: analyses_path, method: :get, local: true, class: "search-form__form") do %>
         <%= hidden_field_tag :order_id, @order_id %>
-        <%= text_field_tag :search, params[:search], placeholder: "Enter type or name of analyses", class: "search-form__field" %>
-        <%= submit_tag "Search", class: "search-form__button" %>
+        <%= text_field_tag :search, params[:search], placeholder: t('actions.analysis_search'), class: "search-form__field" %>
+        <%= submit_tag t('actions.search'), class: "search-form__button" %>
       <% end %>
     </div>
   </div>
@@ -22,9 +22,9 @@
         </div>
         <div class="action">
           <% if @order_id.present? %>
-            <%= button_to 'Add to order', order_order_items_path(order_id: @order_id, analysis_id: analysis.id), method: :post %>
+            <%= button_to t('actions.add_to_order'), order_order_items_path(order_id: @order_id, analysis_id: analysis.id), method: :post %>
           <% else %>
-            <%= button_to 'Add to order', "#", disabled: true, title: "Order ID is missing" %>
+            <%= button_to t('actions.add_to_order'), "#", disabled: true, title: t('actions.order_id_miss') %>
           <% end %>
         </div>
       </div>

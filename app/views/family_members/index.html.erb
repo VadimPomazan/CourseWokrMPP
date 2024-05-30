@@ -1,13 +1,13 @@
 <div class="block__info">
   <div class="info__first-line">
-    <h1 class="info__title">Your Family Members</h1>
+    <h1 class="info__title"><%= t('structure.family_member') %></h1>
   </div>
   <div class="action">
     <div class="link_to">
-        <%= link_to 'Add Family Member', new_family_member_path %>
+        <%= link_to t('actions.add'), new_family_member_path %>
     </div>
       <% unless @family_members.any? { | member | member.family_member_name == "You"}  %>
-        <%= button_to 'Add Yourself', add_self_family_members_path(current_user.id), method: :post %>
+        <%= button_to t('actions.add_yourself'), add_self_family_members_path(current_user.id), method: :post %>
       <% end %>
   </div>
     <div class="info__list">

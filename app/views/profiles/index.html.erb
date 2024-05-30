@@ -4,21 +4,21 @@
 
   <div class="info__first-line">
     <h1 class="info__title">
-      Your Profile
+      <%= t('menu.profile') %>
     </h1>
   </div>
   <div class="info__item">
-    <p class="item__description">email: <strong><%= @profile.user.email %></strong></p>
-    <p class="item__description">Name: <strong><%= @profile.first_name %></strong></p>
-    <p class="item__description">Surname: <strong><%= @profile.last_name %></strong></p>
-    <p class="item__description">Fatherly: <strong><%= @profile.patronym %></strong></p>
-    <p class="item__description">Phone number: <strong><%= @profile.tel %></strong></p>
-    <p class="item__description">Date of birth: <strong> <%= @profile.date_of_birth %></strong></p>
+    <p class="item__description"><%= t('profile.email') %>: <strong><%= @profile.user.email %></strong></p>
+    <p class="item__description"><%= t('profile.first_name') %>: <strong><%= @profile.first_name %></strong></p>
+    <p class="item__description"><%= t('profile.second_name') %>: <strong><%= @profile.last_name %></strong></p>
+    <p class="item__description"><%= t('profile.patronym') %>: <strong><%= @profile.patronym %></strong></p>
+    <p class="item__description"><%= t('profile.tel') %>: <strong><%= @profile.tel %></strong></p>
+    <p class="item__description"><%= t('profile.birth_date') %>: <strong> <%= @profile.date_of_birth %></strong></p>
 
 
     <div class="action">
       <div class="link_to">
-        <%= link_to "Edit", edit_profile_path(id: @profile.id)%>
+        <%= link_to t('actions.edit'), edit_profile_path(id: @profile.id)%>
       </div>
     </div>
 

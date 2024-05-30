@@ -1,31 +1,70 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  menu:
+    logout: "Logout"
+    profile: "My Profile"
+    analyses: "Analysis List"
+    analyses_type: "Analysis Types List"
+    order: "Create Order"
+    create_profile: "Create Profile"
+    sign_up: "Sign Up"
+    login: "Login"
+  actions:
+    add: "Add New"
+    back_to: "Back"
+    new: "New"
+    edit: "Edit"
+    destroy: "Delete"
+    show: "Show"
+    error: "Error"
+    add_yourself: "Add Yourself"
+    add_corresponding_person: "Add Current Person"
+    add_to_order: "Add to Order"
+    analysis_search: "Enter Type or Name of Analysis"
+    search: "Search"
+    order_id_miss: "Order ID Missing"
+    schedule: "Schedule Appointment"
+    select: "Select Your Gender"
+    create: "Create"
+    create_appoint: "Create Appointment"
+    appointment_notification: "An appointment has already been scheduled for this order."
+    cancel: "Cancel"
+  analysis:
+    new_analysis: "New Analysis"
+    edit_analysis: "Edit Analysis"
+  appointments:
+    order_appointments: "Order Appointments"
+    choose_f_m: "Choose Family Member"
+    info: "Appointment Information"
+  structure:
+    appointments: "Appointments"
+    analysis: "Analyses"
+    family_member: "Family Members"
+    order_id: "Order ID"
+    analysis_date: "Analysis Date"
+    order: "Order"
+    profile: "Profile"
+    person_details: "Person Details"
+    total_price: "Total Price"
+    full_name: "Full Name"
+  family_member:
+    new_member: "Add Family Member"
+    edit_member: "Edit Family Member"
+    view: "View Family Members"
+    name: "Family Member"
+  gender:
+    male: "male"
+    female: "female"
+  profile:
+    email: "Email"
+    first_name: "First Name"
+    second_name: "Last Name"
+    patronym: "Middle Name"
+    tel: "Phone Number"
+    address: "Address"
+    birth_date: "Birth Date"
+    gender: "Gender"
+    edit: "Edit Profile"
+    update: "Update Profile"
+    password: "Password"
+    confirm: "Confirm Password"
+    info: "Profile Information"
