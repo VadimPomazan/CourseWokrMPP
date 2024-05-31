@@ -16,6 +16,9 @@
 
         <div class="item__price">
           <p class="price__data"><%= item.analysis.price %> cu</p>
+          <% unless @order.appointment_present? %>
+            <br/><%= button_to 'Delete', order_order_item_path(@order, item), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <% end %>
         </div>
       </div>
     <% end %>

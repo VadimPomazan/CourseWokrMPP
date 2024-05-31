@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
   before_action :check_if_client, only: [:create]
 
   def index
-    @appointments = current_user.appointments
+    @appointments = current_user.appointments.order(created_at: :desc)
   end
 
   def new

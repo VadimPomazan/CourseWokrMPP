@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :check_if_client, only: [:create]
 
   def index
-    @orders = current_user.orders
+    @orders = current_user.orders.order(created_at: :desc)
     # @orders = current_user.orders.includes(:appointment).reject(&:appointment_present?)
   end
 

@@ -32,7 +32,7 @@ en:
     new_analysis: "New Analysis"
     edit_analysis: "Edit Analysis"
   appointments:
-    order_appointments: "Order Appointments"
+    order_appointments: "Appointments for order"
     choose_f_m: "Choose Family Member"
     info: "Appointment Information"
   structure:

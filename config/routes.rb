@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # scope "(:locale)", locale: /en|uk/ do
     resources :orders, only: [:index, :create, :show] do
-      resources :order_items, only: [:create]
+      resources :order_items, only: [:create, :destroy]
     end
     devise_for :admin_users, ActiveAdmin::Devise.config
     ActiveAdmin.routes(self)
